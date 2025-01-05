@@ -88,6 +88,7 @@ class LinkedList:
             else:
                 current = current.next_node
         return None
+    
 # Then, run:
     # l = LinkedList()
     # l.add(1)
