@@ -17,7 +17,7 @@ class Node:
     def __repr__(self):
         return "<Node data: %s>" % self.data
 # Then, run:
-    # python3 i- linked_list.py
+    # python3 -i linked_list.py
     # N1 = Node(10)
     # N1 which will return <Node data: 10>
     # N2 = Node (20)
@@ -88,7 +88,6 @@ class LinkedList:
             else:
                 current = current.next_node
         return None
-    
 # Then, run:
     # l = LinkedList()
     # l.add(1)
@@ -134,6 +133,41 @@ class LinkedList:
     # l    which should return: [Head: 5]-> [4]-> [3]-> [2]-> [Tail: 1]
     # l.insert(6, 2)
     # l    which should return: [Head: 5]-> [4]-> [6]-> [3]-> [2]-> [Tail: 1]
+
+
+    def remove(self, key):
+        """
+        Removes node containing data that matches the key
+        Returns the Node or None if the key doesn't exist
+        Takes O(n) time
+        """
+        current = self.head
+        previous = None
+        found = False
+
+        while current and not found:
+            if current.data == key and current is self.head:
+                found = True
+                self.head = current.next_node
+            elif current.data == key:
+                found = True
+                previous.data_node = current.next_node
+            else:
+                previous = current
+                current = current.next_node
+
+        return current
+# Then, run:
+    # l = LinkedList()
+    # l.add(1)
+    # l.add(2)
+    # l.add(3)
+    # l.add(4)
+    # l.add(5)
+    # l    which should return: [Head: 5]-> [4]-> [3]-> [2]-> [Tail: 1]
+    # l.remove(5)
+    # l    which should return: [Head: 4]-> [3]-> [2]-> [Tail: 1]
+
 
     def __repr__(self):
         """
