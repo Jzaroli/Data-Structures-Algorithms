@@ -1,4 +1,5 @@
-# Linked lists are good at adding and deleting O(1) and are used when we need to use these operations a lot
+# Linked lists are good at adding and deleting O(1) and are used when we need
+# to use these operations a lot
 # Searching has a time complexity of O(n)
 # Single linked lists store a reference to the next node
 # Doubly linked lists store a reference to the previous and next nodes
@@ -16,6 +17,7 @@ class Node:
 
     def __repr__(self):
         return "<Node data: %s>" % self.data
+
 # Then, run:
     # python3 -i linked_list.py
     # N1 = Node(10)
@@ -23,6 +25,7 @@ class Node:
     # N2 = Node (20)
     # N1.next_node = N2
     # N1.next_node which will return <Node data: 20>
+
 
 class LinkedList:
     """
@@ -34,13 +37,14 @@ class LinkedList:
         Initializes an empty linked list by setting the head to None.
         """
         self.head = None
-    
+
     def is_empty(self):
         """
-        Checks if the linked list is empty. Returns True if empty, False otherwise.
+        Checks if the linked list is empty. Returns True if empty, False
+        otherwise.
         """
-        return self.head == None
-    
+        return self.head is None
+
     def size(self):
         """
         Returns the number of ndoes in the list
@@ -52,13 +56,14 @@ class LinkedList:
         while current:
             count += 1
             current = current.next_node
-        
+
         return count
-# Then, run:
-    # l = LinkedList()
-    # N1 = Node(10)
-    # l.head = N1
-    # l.size() which should return 1
+
+    # Then, run:
+        # l = LinkedList()
+        # N1 = Node(10)
+        # l.head = N1
+        # l.size() which should return 1
 
     def add(self, data):
         """
@@ -68,11 +73,12 @@ class LinkedList:
         new_node = Node(data)
         new_node.next_node = self.head
         self.head = new_node
-# Then, run:
-    # l = LinkedList()
-    # l.add(1)
-    # l.add(2)
-    # l.size() which should return 2
+
+    # Then, run:
+        # l = LinkedList()
+        # l.add(1)
+        # l.add(2)
+        # l.size() which should return 2
 
     def search(self, key):
         """
@@ -88,21 +94,23 @@ class LinkedList:
             else:
                 current = current.next_node
         return None
-# Then, run:
-    # l = LinkedList()
-    # l.add(1)
-    # l.add(2)
-    # l.add(45)
-    # l.add(1000)
-    # l.search(1)    which should return: <Node data: 1>
-    # b = l.search(45)
-    # b    which should return : <Node data: 45>
-    # l    which should return: [Head: 1000]-> [45]-> [2]-> [Tail: 1]
+
+    # Then, run:
+        # l = LinkedList()
+        # l.add(1)
+        # l.add(2)
+        # l.add(45)
+        # l.add(1000)
+        # l.search(1)    which should return: <Node data: 1>
+        # b = l.search(45)
+        # b    which should return : <Node data: 45>
+        # l    which should return: [Head: 1000]-> [45]-> [2]-> [Tail: 1]
 
     def insert(self, data, index):
         """
         Inserts a new Node containing data at the index position
-        Insertion takes 0(1) time but finding the node at the inseration point takes 0(n)
+        Insertion takes 0(1) time but finding the node at the inseration point
+        takes 0(n)
         Takes an overall 0(n) time
         """
 
@@ -113,27 +121,27 @@ class LinkedList:
 
             position = index
             current = self.head
-            
+
             while position > 1:
                 current = current.next_node
                 position -= 1
-            
+
             prev = current
             next_node = current.next_node
 
             prev.next_node = new
             new.next_node = next_node
-# Then, run:
-    # l = LinkedList()
-    # l.add(1)
-    # l.add(2)
-    # l.add(3)
-    # l.add(4)
-    # l.add(5)
-    # l    which should return: [Head: 5]-> [4]-> [3]-> [2]-> [Tail: 1]
-    # l.insert(6, 2)
-    # l    which should return: [Head: 5]-> [4]-> [6]-> [3]-> [2]-> [Tail: 1]
 
+    # Then, run:
+        # l = LinkedList()
+        # l.add(1)
+        # l.add(2)
+        # l.add(3)
+        # l.add(4)
+        # l.add(5)
+        # l  which should return: [Head: 5]-> [4]-> [3]-> [2]-> [Tail: 1]
+        # l.insert(6, 2)
+        # l  which should return: [Head: 5]-> [4]-> [6]-> [3]-> [2]-> [Tail:1]
 
     def remove(self, key):
         """
@@ -157,17 +165,30 @@ class LinkedList:
                 current = current.next_node
 
         return current
-# Then, run:
-    # l = LinkedList()
-    # l.add(1)
-    # l.add(2)
-    # l.add(3)
-    # l.add(4)
-    # l.add(5)
-    # l    which should return: [Head: 5]-> [4]-> [3]-> [2]-> [Tail: 1]
-    # l.remove(5)
-    # l    which should return: [Head: 4]-> [3]-> [2]-> [Tail: 1]
 
+    # Then, run:
+        # l = LinkedList()
+        # l.add(1)
+        # l.add(2)
+        # l.add(3)
+        # l.add(4)
+        # l.add(5)
+        # l    which should return: [Head: 5]-> [4]-> [3]-> [2]-> [Tail: 1]
+        # l.remove(5)
+        # l    which should return: [Head: 4]-> [3]-> [2]-> [Tail: 1]
+
+    def node_at_index(self, index):
+        if index == 0:
+            return self.head
+        else:
+            current = self.head
+            position = 0
+
+        while position < index:
+            current = current.next_node
+            position += 1
+
+        return current
 
     def __repr__(self):
         """
@@ -185,12 +206,13 @@ class LinkedList:
                 nodes.append("[Tail: %s]" % current.data)
             else:
                 nodes.append("[%s]" % current.data)
-            
+
             current = current.next_node
         return '-> '.join(nodes)
-# Then, run:
-    # l = LinkedList()
-    # l.add(1)  
-    # l.add(2)
-    # l.add(3)
-    # l  which should print: [Head: 3]-> [2]-> [Tail: 1]
+
+    # Then, run:
+        # l = LinkedList()
+        # l.add(1)
+        # l.add(2)
+        # l.add(3)
+        # l  which should print: [Head: 3]-> [2]-> [Tail: 1]
