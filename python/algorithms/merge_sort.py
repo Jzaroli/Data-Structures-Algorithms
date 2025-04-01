@@ -8,7 +8,7 @@ def merge_sort(list):
     Combine: Merge the sorted sublists created in previous step
 
     The run time of the overall process is O(k n log n)
-    Take linear space or 0(n)
+    Take linear space of 0(n)
     """
 
     if len(list) <= 1:
@@ -20,6 +20,7 @@ def merge_sort(list):
    
     return merge(left, right)
 
+
 def split(list):
     """
     Divide the unsorted list at mipoint into sublists
@@ -29,10 +30,13 @@ def split(list):
     """
 
     mid = len(list)//2
-    left = list[:mid] # split actually takes O(k), can use recursive binary search to solve this
-    right = list[mid:] # split actually takes O(k), can use recursive binary search to solve this
+    left = list[:mid]  # split actually takes O(k), can use recursive binary
+    # search to solve this
+    right = list[mid:]  # split actually takes O(k), can use recursive binary
+    # search to solve this
 
     return left, right
+
 
 def merge(left, right):
     """
@@ -42,27 +46,27 @@ def merge(left, right):
     Takes overall O(n) time
     """
 
-    l = []
+    li = []
     i = 0
     j = 0
 
     while i < len(left) and j < len(right):
         if left[i] < right[j]: 
-            l.append(left[i])
+            li.append(left[i])
             i += 1
         else:
-            l.append(right[j])
+            li.append(right[j])
             j += 1
 
     while i < len(left):
-        l.append(left[i])
+        li.append(left[i])
         i += 1
 
     while j < len(right):
-        l.append(right[j])
+        li.append(right[j])
         j += 1
 
-    return l
+    return li
 
 
 # print(l)
@@ -72,10 +76,11 @@ def verify_sorted(list):
 
     if n == 0 or n == 1:
         return True
-    
+
     return list[0] < list[1] and verify_sorted(list[1:])
 
+
 alist = [54, 26, 62, 93, 77, 32, 44, 55, 20]
-l = merge_sort(alist)
+li = merge_sort(alist)
 print(verify_sorted(alist))
-print(verify_sorted(l))
+print(verify_sorted(li))
