@@ -45,13 +45,11 @@ function merge(left, right) {
         }
     }
 
-    // Add any remaining elements from the left array to the result.
     while (i < left.length) {
         l.push(left[i])
         i += 1
     }
-    
-    // Add any remaining elements from the right array to the result.
+
     while (j < right.length) {
         l.push(right[j])
         j += 1
